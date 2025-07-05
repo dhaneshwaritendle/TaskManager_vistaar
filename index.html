@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Task Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Daily Office Tasks Manager</h1>
+            <div class="date-display">
+                <span id="currentDate"></span>
+            </div>
+        </header>
+
+        <main>
+            <section class="task-input">
+                <h2>Add New Task</h2>
+                <form id="taskForm">
+                    <div class="form-group">
+                        <label for="taskTitle">Task Title:</label>
+                        <input type="text" id="taskTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskDescription">Description:</label>
+                        <textarea id="taskDescription" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskPriority">Priority:</label>
+                        <select id="taskPriority">
+                            <option value="Low">Low</option>
+                            <option value="Medium" selected>Medium</option>
+                            <option value="High">High</option>
+                            <option value="Critical">Critical</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="taskStatus">Status:</label>
+                        <select id="taskStatus">
+                            <option value="Not Started">Not Started</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                            <option value="On Hold">On Hold</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="estimatedHours">Estimated Hours:</label>
+                        <input type="number" id="estimatedHours" min="0.5" step="0.5">
+                    </div>
+                    <button type="submit">Add Task</button>
+                </form>
+            </section>
+
+            <section class="tasks-list">
+                <h2>Today's Tasks</h2>
+                <div class="tasks-header">
+                    <div class="export-buttons">
+                        <button id="emailExport" class="export-btn">📧 Email to Manager</button>
+                        <button id="csvExport" class="export-btn">📊 Export to PPM Sheet</button>
+                        <button id="clearTasks" class="clear-btn">🗑️ Clear All Tasks</button>
+                    </div>
+                </div>
+                <div id="tasksList" class="tasks-container">
+                    <p class="no-tasks">No tasks added yet. Add your first task above!</p>
+                </div>
+            </section>
+
+            <section class="summary">
+                <h3>Daily Summary</h3>
+                <div class="summary-stats">
+                    <div class="stat">
+                        <span class="stat-label">Total Tasks:</span>
+                        <span id="totalTasks">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Completed:</span>
+                        <span id="completedTasks">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">In Progress:</span>
+                        <span id="inProgressTasks">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-label">Total Hours:</span>
+                        <span id="totalHours">0</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Email Modal -->
+    <div id="emailModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Email Preview</h2>
+            <div class="email-form">
+                <label for="managerEmail">Manager's Email:</label>
+                <input type="email" id="managerEmail" placeholder="manager@company.com">
+                <label for="emailSubject">Subject:</label>
+                <input type="text" id="emailSubject" value="">
+                <label for="emailBody">Email Body:</label>
+                <textarea id="emailBody" rows="15" readonly></textarea>
+                <div class="modal-buttons">
+                    <button id="copyEmail">Copy to Clipboard</button>
+                    <button id="openEmailClient">Open Email Client</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
