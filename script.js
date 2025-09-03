@@ -196,7 +196,7 @@ Please find below my daily task report for ${today}:
     emailBody += `------------------------------------------------------------`
 
 Best regards,
-[Your Name]
+[Your Name]`
 
         return emailBody;
     }
